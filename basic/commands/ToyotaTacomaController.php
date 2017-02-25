@@ -80,9 +80,15 @@ class ToyotaTacomaController extends BaseCommand
             	$position->next;
             	continue;	
             }
-            
+
 
             $categoryId = $this->saveStructure($woocommerce,$structure);
+
+            if ($categoryId === 'error') {
+            	$this->error('There is error with category. Go to next part');
+            	$position->next;
+            	continue;	
+            }
 
             if (empty($categoryId)) {
             	$this->error('Categoty ID is not found');
@@ -102,6 +108,9 @@ class ToyotaTacomaController extends BaseCommand
     	foreach ($structure as $item) {
     		$this->whisper('Try to save '.$item['title'].' category');
     		$categotyId = $this->saveCategoty($woocommerce,$item,$categotyId);
+    		if ($categotyId === 'error') {
+    			return $categotyId;
+    		}
     	}
     	return $categotyId;
     }
@@ -120,7 +129,7 @@ class ToyotaTacomaController extends BaseCommand
 			}
 		}catch (HttpClientException $e) {
 			$this->error($e->getMessage()); // Error message.
-		    return;
+		    return 'error';
 		}
 
 		try {
