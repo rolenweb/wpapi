@@ -15,6 +15,7 @@ Thumbs.db
 # composer vendor dir
 /vendor
 /config/db.php
+/config/tacomeDb.php
 /config/params.php
 /cookiefile
 /recognize
