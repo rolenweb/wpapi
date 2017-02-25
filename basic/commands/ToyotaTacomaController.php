@@ -74,6 +74,13 @@ class ToyotaTacomaController extends BaseCommand
             	$this->error('The structure is not found');
                 return;
             }
+
+            if (count($structure) !== 4) {
+            	$this->error('The structure is failed: '.count($structure);
+            	$position->next;
+            	continue;	
+            }
+
             $categoryId = $this->saveStructure($woocommerce,$structure);
 
             if (empty($categoryId)) {

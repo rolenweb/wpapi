@@ -60,4 +60,44 @@ echo Breadcrumbs::widget([
 			</li>		
 		<?php endforeach ?>	
 	</ul>
+
+<?php endif ?>
+
+<?php if (empty($complectations) === false): ?>
+    <table>
+        <thead>
+            <tr>
+                <th>Complectation</th>
+                <th>Engine</th>
+                <th>Production period</th>
+                <th>Options</th>
+                
+            </tr>
+        </thead>
+        <tbody>
+            <?php foreach ($complectations as $complectation): ?>
+                <tr>
+                    <td>
+                        <?= $complectation->complectation ?>
+                    </td>
+                    <td>
+                        <?= $complectation->engine ?>
+                    </td>
+                    <td>
+                        <?= $complectation->period ?>
+                    </td>
+                   
+                    <td>
+                        <?php if (empty($complectation->options) === false): ?>
+                        <?php foreach ($complectation->options as $option): ?>
+                            
+                                <?= $option->title ?> / 
+                            
+                        <?php endforeach ?>
+                    <?php endif ?>
+                    </td>
+                </tr>
+            <?php endforeach ?>
+        </tbody>
+    </table>
 <?php endif ?>
