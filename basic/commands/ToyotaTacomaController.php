@@ -56,7 +56,7 @@ class ToyotaTacomaController extends BaseCommand
 		    ]
 		);
 
-    	for ($i = 0;$i < 1; $i++) { 
+    	for ($i = 0;$i < 10000; $i++) { 
         	$position = Position::findOne(['status' => 2,'domain_id' => $domain->id]);
             if (empty($position)) {
                 $this->error('The position is not found');
