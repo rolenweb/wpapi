@@ -52,6 +52,7 @@ $config = [
         ],
         'db' => require(__DIR__ . '/db.php'),
         'tacoma' => require(__DIR__ . '/tacomeDb.php'),
+        'highlander' => require(__DIR__ . '/highlanderDb.php'),
         'urlManager' => [
             'enablePrettyUrl' => true,
             'showScriptName' => false,
